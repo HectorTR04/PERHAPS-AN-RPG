@@ -2,32 +2,36 @@
 using System;
 using Assets.Scripts.Globals;
 using UnityEngine;
+using Assets.Scripts.Interfaces;
 
-public class StartcardFlip : MonoBehaviour
+public class StartcardFlip : MonoBehaviour, IFlippable
 {
-    public event Action OnCardFlipped;
+    public event Action OnFlipped;
+
     private SpriteRenderer rend;
     [SerializeField] private Sprite cardFront, cardBack;
-    private bool hasFlipped;
+
+    bool IFlippable.IsFlipped { get; set; }
+
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
         rend.sprite = cardFront;
-        hasFlipped = false;
+        ((IFlippable)this).IsFlipped = false;
     }
 
     private void Update()
     {
-        if (!hasFlipped)
+        if (!((IFlippable)this).IsFlipped)
         {
             if (Input.GetKeyDown(InputCodes.INTERACT_BUTTON))
             {
-                StartCoroutine(FlipCard());
+                StartCoroutine(Flip());
             }
         }
     }
 
-    private IEnumerator FlipCard()
+    public IEnumerator Flip()
     {
         for (float i = 180f; i >= 0f; i -= 5f)
         {
@@ -39,7 +43,7 @@ public class StartcardFlip : MonoBehaviour
             }
             yield return null;
         }
-        hasFlipped = true;
-        OnCardFlipped?.Invoke();
+        ((IFlippable)this).IsFlipped = true;
+        OnFlipped?.Invoke();
     }
 }
