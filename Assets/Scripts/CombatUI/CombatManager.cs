@@ -57,7 +57,7 @@ public class CombatManager : MonoBehaviour
 
     void FightChoice()
     {
-        if (Input.GetKeyDown(InputCodes.RIGHT_ARROW))
+        if (Input.GetKeyDown(InputCodes.NAVIGATE_RIGHT))
         {
             CurrentPlayerChoice = PlayerChoice.UseItem;
         }
@@ -69,11 +69,11 @@ public class CombatManager : MonoBehaviour
 
     void ItemChoice()
     {
-        if (Input.GetKeyDown(InputCodes.RIGHT_ARROW))
+        if (Input.GetKeyDown(InputCodes.NAVIGATE_RIGHT))
         {
             CurrentPlayerChoice = PlayerChoice.Escape;
         }
-        if (Input.GetKeyDown(InputCodes.LEFT_ARROW))
+        if (Input.GetKeyDown(InputCodes.NAVIGATE_LEFT))
         {
             CurrentPlayerChoice = PlayerChoice.Fight;
         }
@@ -85,7 +85,7 @@ public class CombatManager : MonoBehaviour
 
     void EscapeChoice()
     {
-        if (Input.GetKeyDown(InputCodes.LEFT_ARROW))
+        if (Input.GetKeyDown(InputCodes.NAVIGATE_LEFT))
         {
             CurrentPlayerChoice = PlayerChoice.UseItem;
         }
