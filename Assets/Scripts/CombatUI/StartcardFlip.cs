@@ -1,7 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System;
+using Assets.Scripts.Globals;
 using UnityEngine;
-
 
 public class StartcardFlip : MonoBehaviour
 {
@@ -20,10 +20,10 @@ public class StartcardFlip : MonoBehaviour
     {
         if (!hasFlipped)
         {
-            //if (Input.GetKeyDown(InputCodes.INTERACT_BUTTON))
-            //{
-            //    StartCoroutine(FlipCard());
-            //}
+            if (Input.GetKeyDown(InputCodes.INTERACT_BUTTON))
+            {
+                StartCoroutine(FlipCard());
+            }
         }
     }
 
@@ -43,4 +43,3 @@ public class StartcardFlip : MonoBehaviour
         OnCardFlipped?.Invoke();
     }
 }
-
