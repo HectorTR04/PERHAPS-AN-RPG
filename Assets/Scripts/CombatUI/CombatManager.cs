@@ -43,6 +43,7 @@ public class CombatManager : MonoBehaviour
         {
             case PlayerChoice.Fight:
                 FightChoice();
+                //fightOption.GetComponent<StartcardFlip>().OnFlipped += TransitionToFighting;
                 break;
             case PlayerChoice.UseItem:
                 ItemChoice();
@@ -92,6 +93,12 @@ public class CombatManager : MonoBehaviour
         itemOption.IsSelected = false;
         runOption.IsSelected = true;
         //logic to leave combat
+    }
+
+    void TransitionToFighting()
+    {
+        CurrentCombatState = CombatState.Fighting;
+
     }
 
 
